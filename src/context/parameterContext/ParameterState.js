@@ -5,15 +5,42 @@ import parameterContext from './parameterContext'
 const ParameterState = ({children}) => {
     const checkboxNames = ['Binary code', 'Shannon-Fano code', 'Huffman code']
 
-    const [parameterState, setParameterState] = useState({
-        checkboxes: checkboxNames.map((item, index) => {
+    const initalState = () => {
+        const state = {}
+        state.checkboxes = checkboxNames.map((item, index) => {
             return {
                 text: item,
                 id: `checkbox-${index}`,
                 activity: false
             }
         })
-    });
+        const voidArr = new Array(5).fill(null)
+        state.select = voidArr.map((item, index) => {
+            return {
+                value: index + 2,
+                id: `option-${index}`,
+                activity: index === 0 ? true : false
+            }
+        }) 
+         
+        return state
+    }
+
+    const [parameterState, setParameterState] = useState(
+        initalState()
+    )
+
+    const optionClickHandler = (index) => {
+        const { select } = parameterState
+        const newSelect = select.map((itm, ind) => {
+            if (ind === index) return {...itm, activity: !itm.activity}
+            return {...itm, activity: itm.activity}
+        })
+        setParameterState({
+            ...parameterState, 
+            select: newSelect
+        })
+    }
 
     const checkboxClickHandler = (index) => {
         const { checkboxes } = parameterState
@@ -30,6 +57,7 @@ const ParameterState = ({children}) => {
     return (
         <parameterContext.Provider value={{
             checkboxClickHandler,
+            optionClickHandler,
             parameterState
         }}>
             {children}
