@@ -5,7 +5,7 @@ import parameterContext from './parameterContext'
 const ParameterState = ({children}) => {
     const checkboxNames = ['Binary code', 'Shannon-Fano code', 'Huffman code']
 
-    const [settingsState, setSettingsState] = useState({
+    const [parameterState, setParameterState] = useState({
         checkboxes: checkboxNames.map((item, index) => {
             return {
                 text: item,
@@ -16,13 +16,13 @@ const ParameterState = ({children}) => {
     });
 
     const checkboxClickHandler = (index) => {
-        const { checkboxes } = settingsState
+        const { checkboxes } = parameterState
         const newCheckboxes = checkboxes.map((itm, ind) => {
             if (ind === index) return {...itm, activity: !itm.activity}
             return {...itm, activity: itm.activity}
         })
-        setSettingsState({
-            ...settingsState, 
+        setParameterState({
+            ...parameterState, 
             checkboxes: newCheckboxes 
         })
     }
@@ -30,7 +30,7 @@ const ParameterState = ({children}) => {
     return (
         <parameterContext.Provider value={{
             checkboxClickHandler,
-            settingsState
+            parameterState
         }}>
             {children}
         </parameterContext.Provider>

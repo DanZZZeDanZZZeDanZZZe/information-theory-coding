@@ -4,13 +4,13 @@ import { useEffect, useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 
 const App = () => {
-    const { checkboxClickHandler, settingsState} = useContext(parameterContext)
+    const { checkboxClickHandler, parameterState} = useContext(parameterContext)
 
     useEffect(() => {
-        console.log(settingsState)
-    }, [settingsState]);
+        console.log(parameterState)
+    }, [parameterState]);
 
-    const { checkboxes } = settingsState
+    const { checkboxes } = parameterState
 
     return (
         <div className="app">
