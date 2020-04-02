@@ -19,26 +19,21 @@ const ParameterState = ({children}) => {
             return {
                 value: index + 2,
                 id: `option-${index}`,
-                activity: index === 0 ? true : false
             }
         }) 
-         
+        state.alphabetLength = 2
         return state
     }
+
 
     const [parameterState, setParameterState] = useState(
         initalState()
     )
 
-    const optionClickHandler = (index) => {
-        const { select } = parameterState
-        const newSelect = select.map((itm, ind) => {
-            if (ind === index) return {...itm, activity: !itm.activity}
-            return {...itm, activity: itm.activity}
-        })
+    const changeAlphabetLength = (length) => {
         setParameterState({
             ...parameterState, 
-            select: newSelect
+            alphabetLength: length
         })
     }
 
@@ -57,7 +52,7 @@ const ParameterState = ({children}) => {
     return (
         <parameterContext.Provider value={{
             checkboxClickHandler,
-            optionClickHandler,
+            changeAlphabetLength,
             parameterState
         }}>
             {children}

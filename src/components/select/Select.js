@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 
 const Select = ({title}) => {
-    const { parameterState: { select }} = useContext(parameterContext)
-    
+    const { changeAlphabetLength, parameterState: { select }} = useContext(parameterContext)
     const options = select.map((item, index) => {
         const {value, id} = item
         const props = {
@@ -17,15 +16,15 @@ const Select = ({title}) => {
         ) 
     })
 
+    const onChangeHandler = (event) => {
+        changeAlphabetLength(+event.target.value)
+    }
+
     return (
         <div className="select">
             <p>{title}</p>
             <select 
-                onClick={
-                    () => {
-                        console.log('hy')
-                    }
-                }
+                onChange={onChangeHandler}
             >
                 {options}
             </select>
