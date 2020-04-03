@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import parameterContext from './parameterContext'
+import { isANumber } from '../../logic/logic'
 
 
 const ParameterState = ({children}) => {
@@ -31,7 +32,10 @@ const ParameterState = ({children}) => {
         const characterArr = arr.map((item, index) => {
             return {
                 name: `a${index+1}`,
-                chance: 0.5
+                chance: 0.5,
+                valid: true,
+                shouldValidate: true,
+                touched: false
             }
         })
         return characterArr
@@ -59,7 +63,16 @@ const ParameterState = ({children}) => {
 
     const chanceChange = (value, index) => {
         const { characterChance } = parameterState
-        characterChance[index].chance = value
+        let { chance, touched, valid, ...props } = characterChance[index]
+        touched = true
+        chance = value
+        console.log(isANumber(+value))
+        if (isANumber(+value)) {
+            valid = true
+        } else {
+            valid = false
+        }
+        characterChance[index] = { chance, touched, valid, ...props }
         setParameterState({
             ...parameterState, 
             characterChance: characterChance 
