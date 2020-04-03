@@ -3,6 +3,7 @@ import './app.css'
 import { useEffect, useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 import Select from '../select'
+import CharacterChance from '../CharacterChance'
 
 const App = () => {
     const { checkboxClickHandler, parameterState} = useContext(parameterContext)
@@ -38,7 +39,7 @@ const App = () => {
                 <Select
                     title={`Choose the length of the alphabet`}
                 />
-                <p></p>
+                <CharacterChance/>
             </div>
         </div>
     )

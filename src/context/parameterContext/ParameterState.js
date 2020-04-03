@@ -21,19 +21,30 @@ const ParameterState = ({children}) => {
                 id: `option-${index}`,
             }
         }) 
-        state.alphabetLength = 2
+        state.characterChance = createCharacterChanceArr(2)
         return state
     }
 
+
+    const createCharacterChanceArr = (length) => {
+        const arr = new Array(length).fill(null)
+        const characterArr = arr.map((item, index) => {
+            return {
+                name: `a${index+1}`,
+                chance: 0.5
+            }
+        })
+        return characterArr
+    }
 
     const [parameterState, setParameterState] = useState(
         initalState()
     )
 
-    const changeAlphabetLength = (length) => {
+    const changeAlphabetSettings = (length) => {
         setParameterState({
             ...parameterState, 
-            alphabetLength: length
+            characterChance: createCharacterChanceArr(length)
         })
     }
 
@@ -49,10 +60,20 @@ const ParameterState = ({children}) => {
         })
     }
 
+    const chanceChange = (value, index) => {
+        const { characterChance } = parameterState
+        characterChance[index].chance = value
+        setParameterState({
+            ...parameterState, 
+            characterChance: characterChance 
+        })
+    }
+
     return (
         <parameterContext.Provider value={{
             checkboxClickHandler,
-            changeAlphabetLength,
+            changeAlphabetSettings,
+            chanceChange,
             parameterState
         }}>
             {children}
