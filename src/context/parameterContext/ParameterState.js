@@ -50,13 +50,10 @@ const ParameterState = ({children}) => {
 
     const checkboxClickHandler = (index) => {
         const { checkboxes } = parameterState
-        const newCheckboxes = checkboxes.map((itm, ind) => {
-            if (ind === index) return {...itm, activity: !itm.activity}
-            return {...itm, activity: itm.activity}
-        })
+        checkboxes[index].activity = !checkboxes[index].activity
         setParameterState({
             ...parameterState, 
-            checkboxes: newCheckboxes 
+            checkboxes: checkboxes 
         })
     }
 
