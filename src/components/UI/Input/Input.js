@@ -1,10 +1,18 @@
 import React from 'react'
 import classes from './Input.module.css'
 
+function isInvalid({valid, touched, shouldValidate}) {
+    return !valid && shouldValidate && touched
+}
+
 const Input = props => {
     const inputType = props.type || 'text'
     const cls = [classes.Input]
     const htmlFor = `${inputType}-${Math.random()}`
+
+    if (isInvalid(props)) {
+        cls.push(classes.invalid)
+    }
 
     return (
         <div className={cls.join(' ')}>
@@ -16,8 +24,12 @@ const Input = props => {
                 onChange={props.onChange}
                 defaultValue={props.defaultValue}
             />
-
-            <span>{props.errorMessage}</span>
+            {
+                isInvalid(props)
+                    ?<span>{props.errorMessage || 'Enter the correct value'}</span>
+                    :null
+            }
+            
         </div>
     )
 }
