@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Input.css'
+import classes from './Input.module.css'
 
 const Input = props => {
     const inputType = props.type || 'text'
@@ -14,6 +14,7 @@ const Input = props => {
                 id={htmlFor}
                 value={props.value}
                 onChange={props.onChange}
+                defaultValue={props.defaultValue}
             />
 
             <span>{props.errorMessage}</span>

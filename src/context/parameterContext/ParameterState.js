@@ -48,7 +48,7 @@ const ParameterState = ({children}) => {
         })
     }
 
-    const checkboxClickHandler = (index) => {
+    const checkboxChangeHandler = (index) => {
         const { checkboxes } = parameterState
         checkboxes[index].activity = !checkboxes[index].activity
         setParameterState({
@@ -68,7 +68,7 @@ const ParameterState = ({children}) => {
 
     return (
         <parameterContext.Provider value={{
-            checkboxClickHandler,
+            checkboxChangeHandler,
             changeAlphabetSettings,
             chanceChange,
             parameterState

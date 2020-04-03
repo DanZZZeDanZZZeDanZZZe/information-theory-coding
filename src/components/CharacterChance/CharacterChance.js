@@ -1,6 +1,7 @@
 import React from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 import { useContext } from 'react'
+import Input from '../UI/Input'
 
 const CharacterChance = () => {
     const { parameterState: { characterChance }, chanceChange} = useContext(parameterContext)
@@ -12,13 +13,13 @@ const CharacterChance = () => {
                     const  { name, chance } = characterChance[index]
                     return (
                         <div className='character-chance-item' key={index}>
-                            <label>{`${name} `}</label>
-                            <input 
+                            <Input
+                                label={name}
+                                errorMessage={'sds'}
+                                defaultValue={chance} 
                                 onChange={(e)=>{
                                     chanceChange(e.target.value, index)
                                 }}
-                                type='text' 
-                                defaultValue={chance} 
                             />
                         </div> 
                     )
@@ -27,5 +28,4 @@ const CharacterChance = () => {
         </div>
     )
 }
-
 export default CharacterChance
