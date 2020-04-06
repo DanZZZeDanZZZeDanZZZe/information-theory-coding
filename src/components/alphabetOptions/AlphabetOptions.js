@@ -1,12 +1,12 @@
 import React from 'react'
-import './app.css'
+import './AlphabetOptions.css'
 import { useEffect, useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 import Select from '../select'
 import CharacterChance from '../CharacterChance'
 import Input from '../UI/Input'
 
-const App = () => {
+const AlphabetOptions = () => {
     const { checkboxChangeHandler, parameterState} = useContext(parameterContext)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const App = () => {
     const { checkboxes } = parameterState
 
     return (
-        <div className="app">
+        <div className="alphabet-options">
             <h1>Define informational characteristics for:</h1>
             <div>
                 <div className='checkbox-container'>
@@ -46,4 +46,4 @@ const App = () => {
     )
 }
 
-export default App
+export default AlphabetOptions
