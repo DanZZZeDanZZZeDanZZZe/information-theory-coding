@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import parameterContext from './parameterContext'
-import { isANumber } from '../../logic/logic'
+import { isANumber, limitNumberFormat } from '../../logic/logic'
 
 
 const ParameterState = ({children}) => {
@@ -66,8 +66,7 @@ const ParameterState = ({children}) => {
         let { chance, touched, valid, ...props } = characterChance[index]
         touched = true
         chance = value
-        console.log(isANumber(+value))
-        if (isANumber(+value)) {
+        if (limitNumberFormat(value)) {
             valid = true
         } else {
             valid = false

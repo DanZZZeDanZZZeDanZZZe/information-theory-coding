@@ -23,6 +23,7 @@ const CharacterChance = () => {
                                 shouldValidate={shouldValidate}
                                 valid={valid}
                                 touched={touched}
+                                type="number"
                                 onChange={ event => {
                                     onChangeHandler(event.target.value, index)
                                 }}

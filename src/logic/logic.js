@@ -4,4 +4,9 @@ function isANumber(value) {
     return isFinite(value)
 }
 
-export {isANumber}
+function limitNumberFormat(value) {
+    if (value >= 1) return false
+    if (value.toString().length > 6) return false
+    return true 
+} 
+export {isANumber, limitNumberFormat}
