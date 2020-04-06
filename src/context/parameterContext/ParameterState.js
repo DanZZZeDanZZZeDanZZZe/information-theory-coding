@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import parameterContext from './parameterContext'
-import { isANumber, limitNumberFormat } from '../../logic/logic'
+import { isANumber, limitNumberFormat, transformTheData } from '../../logic/logic'
 
 
 const ParameterState = ({children}) => {
@@ -15,14 +15,8 @@ const ParameterState = ({children}) => {
                 activity: false
             }
         })
-        const voidArr = new Array(5).fill(null)
-        state.select = voidArr.map((item, index) => {
-            return {
-                value: index + 2,
-                id: `option-${index}`,
-            }
-        }) 
         state.characterChance = createCharacterChanceArr(2)
+        state.blockLength = 2
         return state
     }
 
@@ -52,6 +46,13 @@ const ParameterState = ({children}) => {
         })
     }
 
+    const changeBlockLength = (length) => {
+        setParameterState({
+            ...parameterState, 
+            blockLength: length
+        })
+    }
+
     const checkboxChangeHandler = (index) => {
         const { checkboxes } = parameterState
         checkboxes[index].activity = !checkboxes[index].activity
@@ -77,11 +78,17 @@ const ParameterState = ({children}) => {
             characterChance: characterChance 
         })
     }
-
+    const calculationsButtonClickHandler = () => {
+        const { characterChance, blockLength } = parameterState
+        const combinations = transformTheData(characterChance, blockLength)
+        console.log(combinations)
+    }
     return (
         <parameterContext.Provider value={{
+            calculationsButtonClickHandler,
             checkboxChangeHandler,
             changeAlphabetSettings,
+            changeBlockLength,
             chanceChange,
             parameterState
         }}>

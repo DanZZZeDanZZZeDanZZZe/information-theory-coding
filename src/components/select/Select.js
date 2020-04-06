@@ -1,23 +1,23 @@
 import React, { useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 
-const Select = ({title}) => {
-    const { changeAlphabetSettings, parameterState: { select }} = useContext(parameterContext)
-    const options = select.map((item, index) => {
-        const {value, id} = item
-        const props = {
-            key: index,
-            id: id
-        }
-        return (
-            <option {...props}>
-                {value}
-            </option>
-        ) 
-    })
+const Select = ({title, range, activity}) => {
+    const options = new Array(range[1]-range[0]+2)
+        .fill(null)
+        .map((item, index) => {
+            const props = {
+                key: index,
+                id: `option-${index}`,
+            }
+            return (
+                <option {...props}>
+                    {index + range[0]}
+                </option>
+            ) 
+        })
 
     const onChangeHandler = (event) => {
-        changeAlphabetSettings(+event.target.value)
+        activity(+event.target.value)
     }
 
     return (

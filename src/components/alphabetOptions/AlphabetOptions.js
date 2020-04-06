@@ -5,10 +5,11 @@ import parameterContext from '../../context/parameterContext/parameterContext'
 import Select from '../select'
 import CharacterChance from '../CharacterChance'
 import Input from '../UI/Input'
+import CalculationsButton from '../CalculationsButton/CalculationsButton.js'
 
 const AlphabetOptions = () => {
-    const { checkboxChangeHandler, parameterState} = useContext(parameterContext)
-
+    const { checkboxChangeHandler, parameterState, changeAlphabetSettings, changeBlockLength} = useContext(parameterContext)
+    const { select } = parameterState
     useEffect(() => {
         console.log(parameterState)
     }, [parameterState]);
@@ -38,9 +39,19 @@ const AlphabetOptions = () => {
                     }
                 </div>
                 <Select
-                    title={`Choose the length of the alphabet`}
+                    title={`Choose the length of the alphabet`} 
+                    activity={changeAlphabetSettings}
+                    select={select}
+                    range={[2,4]}
+                />
+                <Select
+                    title={`Choose the length of the encoded block`}
+                    activity={changeBlockLength}
+                    select={select}
+                    range={[2,3]}
                 />
                 <CharacterChance/>
+                <CalculationsButton/>
             </div>
         </div>
     )

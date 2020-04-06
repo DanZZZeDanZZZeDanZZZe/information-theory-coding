@@ -41,7 +41,7 @@ function getСharacterСombinations(alphabet, blockLength) {
             const partArr = arr2.map((item2) => {
                 return {
                     name: `${item1.name} ${item2.name}`,
-                    chance: item1.value * item2.value
+                    chance: item1.chance * item2.chance
                 }
             })
             newArr = newArr.concat(partArr)
@@ -52,34 +52,4 @@ function getСharacterСombinations(alphabet, blockLength) {
     return powArr(alphabet, alphabet, n)
 }
 
-
-
-/*function transformOnHaff(arr, m) {
-    n = 1;
-    function powArr(arr1, arr2, n) {
-        if (n === m) {
-            return arr1.sort(compareNumeric)
-        }
-        
-        newArr = [] 
-        arr1.forEach((item1)=>{
-            partArr = arr2.map((item2) => {
-                return {
-                    name: `${item1.name} ${item2.name}`,
-                    value: item1.value * item2.value
-                }
-            })
-            newArr = newArr.concat(partArr)
-        })
-        return powArr(newArr, arr2, n+1)
-    }
-
-    return powArr(arr, arr, n)
-}
-console.log('1')
-console.log(transformOnHaff([{name: 'a1', value: 0.3},{name: 'a2', value: 0.7}], 1))
-console.log('2')
-console.log(transformOnHaff([{name: 'a1', value: 0.3},{name: 'a2', value: 0.7}], 2))
-console.log('3')
-console.log(transformOnHaff([{name: 'a1', value: 0.3},{name: 'a2', value: 0.7}], 3))*/
 export {isANumber, limitNumberFormat, transformTheData}

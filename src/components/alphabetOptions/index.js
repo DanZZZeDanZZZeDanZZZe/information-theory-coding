@@ -1,3 +1,3 @@
-import App from "./AlphabetOptions";
+import AlphabetOptions from "./AlphabetOptions";
 
-export default App
+export default AlphabetOptions
