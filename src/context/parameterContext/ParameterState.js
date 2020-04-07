@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import parameterContext from './parameterContext'
-import { isANumber, limitNumberFormat, transformTheData } from '../../logic/logic'
+import { limitNumberFormat, transformTheData } from '../../logic/logic'
 
 
 const ParameterState = ({children}) => {

@@ -11,9 +11,9 @@ function limitNumberFormat(value) {
 } 
 
 function compareNumeric(a, b) {
-    if (a.value > b.value) return -1;
-    if (a.value === b.value) return 0;
-    if (a.value < b.value) return 1;
+    if (a.chance > b.chance) return -1;
+    if (a.chance === b.chance) return 0;
+    if (a.chance < b.chance) return 1;
 }
 function transformTheData(data, blockLength) {
     return getСharacterСombinations(
@@ -41,7 +41,7 @@ function getСharacterСombinations(alphabet, blockLength) {
             const partArr = arr2.map((item2) => {
                 return {
                     name: `${item1.name} ${item2.name}`,
-                    chance: item1.chance * item2.chance
+                    chance: +(item1.chance * item2.chance).toFixed(12)
                 }
             })
             newArr = newArr.concat(partArr)
@@ -51,5 +51,7 @@ function getСharacterСombinations(alphabet, blockLength) {
 
     return powArr(alphabet, alphabet, n)
 }
-
-export {isANumber, limitNumberFormat, transformTheData}
+function roundData(data, precision) {
+    data.forEach(item => item.chance.toFixed(precision))
+}
+export {isANumber, limitNumberFormat, transformTheData, roundData}
