@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import parameterContext from './parameterContext'
-import { limitNumberFormat, transformTheData } from '../../logic/logic'
+import { limitNumberFormat, transformTheData, getUniformBinaryCodes } from '../../logic/logic'
 
 
 const ParameterState = ({children}) => {
@@ -80,7 +80,8 @@ const ParameterState = ({children}) => {
     }
     const calculationsButtonClickHandler = () => {
         const { characterChance, blockLength } = parameterState
-        const combinations = transformTheData(characterChance, blockLength)
+        let combinations = transformTheData(characterChance, blockLength)
+        combinations = getUniformBinaryCodes(combinations)
         console.log(combinations)
     }
     return (

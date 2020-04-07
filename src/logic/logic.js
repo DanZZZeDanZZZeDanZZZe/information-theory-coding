@@ -51,7 +51,34 @@ function getСharacterСombinations(alphabet, blockLength) {
 
     return powArr(alphabet, alphabet, n)
 }
-function roundData(data, precision) {
-    data.forEach(item => item.chance.toFixed(precision))
+function getUniformBinaryCodes(data) {
+    const length = data.length
+    let interval 
+    if (length % 2) {
+        interval = (length + 1) / 2
+    } else {
+        interval = length / 2
+    }
+    data = data.map(item => {
+        const uniformBinaryCode = ''
+        return {...item, uniformBinaryCode}
+    })     
+    function addNumber(data, interval) {
+        console.log(interval)
+        let counter = 0
+        let num = 0
+        data = data.map( item => { 
+            ++counter
+            if (counter === interval + 1) {
+                counter = 1
+                num = +!num
+            } 
+            item.uniformBinaryCode = item.uniformBinaryCode + num
+            return item
+        })
+        if (interval !== 1) return addNumber(data, interval / 2)
+    }
+    addNumber(data, interval)
+    return data
 }
-export {isANumber, limitNumberFormat, transformTheData, roundData}
+export {isANumber, limitNumberFormat, transformTheData, getUniformBinaryCodes}
