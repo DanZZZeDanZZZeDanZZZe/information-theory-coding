@@ -17,28 +17,16 @@ const AlphabetOptions = () => {
     }, [parameterState]);
 
     return (
-        <React.Fragment>
-            <div className="row">
-                <div className="col s6">
-                    <CodeTypeCard />
-                    <SelectCard />
-                    <CalculationsButton/>
-                </div>
-                <div className="col s6">
-                    <CharacterChance/>
-                </div>
+        <div className="row">
+            <div className="col s6">
+                <CodeTypeCard />
+                <SelectCard />
+                <CalculationsButton/>
             </div>
-            <div className="row">
-                <div className="col s6">
-                    
-                </div>
+            <div className="col s6">
+                <CharacterChance/>
             </div>
-            <div className="row">
-                <div className="col s6">
-                    
-                </div>
-            </div>
-        </React.Fragment>
+        </div>
     )
 }
 

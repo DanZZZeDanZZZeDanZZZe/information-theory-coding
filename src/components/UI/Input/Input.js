@@ -8,10 +8,12 @@ function isInvalid({valid, touched, shouldValidate}) {
 const Input = props => {
     const inputType = props.type || 'text'
     const cls = [classes.Input]
+    let scaleMas = 'scale-out'
     const htmlFor = `${inputType}-${Math.random()}`
 
     if (isInvalid(props)) {
         cls.push(classes.invalid)
+        scaleMas = '' 
     }
 
     return (
@@ -24,11 +26,9 @@ const Input = props => {
                 onChange={props.onChange}
                 defaultValue={props.defaultValue}
             />
-            {
-                isInvalid(props)
-                    ?<span>{props.errorMessage || 'Enter the correct value'}</span>
-                    :null
-            }
+            <span className={`mas scale-transition ${scaleMas}`}>
+                {props.errorMessage || 'Enter the correct value'}
+            </span>
         </div>
     )
 }

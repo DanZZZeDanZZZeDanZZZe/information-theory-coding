@@ -2,11 +2,13 @@
     margin-bottom: 15px;
     display: flex;
     align-items: center;
+    margin-right: 5px;
 }
 .Input label {
     margin-bottom: 3px;
     padding: 0px;
     font-weight: bold;
+    margin-right: 5px;
 }
 
 .Input input {
@@ -16,15 +18,15 @@
     margin: 5px;
     outline: none;
     transition: all 300ms ease-in-out;
-
 }
 
-.Input span .mas {
-    color: #f01f30;
+.Input > span{
+    color: #8d4789;
     font-size: 12px;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .Input.invalid label {
-    color: #f01f30;
+    color: #8d4789;
 }
