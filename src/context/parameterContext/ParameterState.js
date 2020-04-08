@@ -82,7 +82,6 @@ const ParameterState = ({children}) => {
         const { characterChance, blockLength } = parameterState
         let combinations = transformTheData(characterChance, blockLength)
         combinations = getUniformBinaryCodes(combinations)
-        console.log(combinations)
     }
     return (
         <parameterContext.Provider value={{

@@ -4,56 +4,41 @@ import { useEffect, useContext } from 'react'
 import parameterContext from '../../context/parameterContext/parameterContext'
 import Select from '../select'
 import CharacterChance from '../CharacterChance'
-import Input from '../UI/Input'
 import CalculationsButton from '../CalculationsButton/CalculationsButton.js'
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
+import CodeTypeCard from '../CodeTypeCard/CodeTypeCard'
+import SelectCard from '../SelectCard/SelectCard'
 
 const AlphabetOptions = () => {
-    const { checkboxChangeHandler, parameterState, changeAlphabetSettings, changeBlockLength} = useContext(parameterContext)
-    const { select } = parameterState
+    const { parameterState } = useContext(parameterContext)
     useEffect(() => {
         console.log(parameterState)
     }, [parameterState]);
 
-    const { checkboxes } = parameterState
-
     return (
-        <div className="alphabet-options">
-            <h1>Define informational characteristics for:</h1>
-            <div>
-                <div className='checkbox-container'>
-                    <p>Select code type</p>
-                    {
-                        checkboxes.map((item, index) => {
-                            const {text, id} = item
-                            return (
-                                <Input
-                                    type="checkbox" 
-                                    onChange={
-                                        () => {checkboxChangeHandler(index)}
-                                    }
-                                    label={text}
-                                    key={id}
-                                />
-                            )
-                        })
-                    }
+        <React.Fragment>
+            <div className="row">
+                <div className="col s6">
+                    <CodeTypeCard />
+                    <SelectCard />
+                    <CalculationsButton/>
                 </div>
-                <Select
-                    title={`Choose the length of the alphabet`} 
-                    activity={changeAlphabetSettings}
-                    select={select}
-                    range={[2,4]}
-                />
-                <Select
-                    title={`Choose the length of the encoded block`}
-                    activity={changeBlockLength}
-                    select={select}
-                    range={[2,3]}
-                />
-                <CharacterChance/>
-                <CalculationsButton/>
+                <div className="col s6">
+                    <CharacterChance/>
+                </div>
             </div>
-        </div>
+            <div className="row">
+                <div className="col s6">
+                    
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s6">
+                    
+                </div>
+            </div>
+        </React.Fragment>
     )
 }
 

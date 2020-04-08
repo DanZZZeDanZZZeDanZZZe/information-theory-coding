@@ -5,7 +5,10 @@ const CalculationsButton = () => {
     const { calculationsButtonClickHandler } = useContext(parameterContext)
 
     return (
-        <button onClick={calculationsButtonClickHandler}>
+        <button 
+            onClick={calculationsButtonClickHandler}
+            className="btn waves-effect waves-purple"
+        >
             Сalculate
         </button>
     )

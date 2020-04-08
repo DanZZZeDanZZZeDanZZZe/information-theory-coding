@@ -29,7 +29,6 @@ const Input = props => {
                     ?<span>{props.errorMessage || 'Enter the correct value'}</span>
                     :null
             }
-            
         </div>
     )
 }
